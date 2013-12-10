@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+    <!-- 切面类 -->
+    <bean id="myLogging" class="edu.njupt.zhb.Logging"></bean>
+    <!-- AOP配置 -->
+    <aop:config>
+       <aop:aspect id="logStudent" ref="myLogging">
+           <!-- pointcut配置 -->
+           <aop:pointcut id="allMethod" expression="execution(* edu.njupt.zhb.*.*(..))"/>
+             <aop:before pointcut-ref="allMethod" method="beforeAdvice"/>
+             <aop:after  pointcut-ref="allMethod" method="afterAdvice"/>
+             <aop:after-returning pointcut-ref="allMethod" returning="retVal" method="afterReturningAdvice"/>
+             <aop:after-throwing pointcut-ref="allMethod" throwing="ex" method="afterThrowingAdvice"/>
+       </aop:aspect>
+    </aop:config>
+    <bean id="student" class="edu.njupt.zhb.Student">
+      <property name="id" value="1012010638"></property>
+      <property name="name" value="Haibo Zheng"></property>
+    </bean>
+</beans>
