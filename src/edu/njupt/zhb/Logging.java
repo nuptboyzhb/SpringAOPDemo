@@ -5,6 +5,9 @@
  * This software is Made by Zhenghaibo.
  */
 package edu.njupt.zhb;
+
+import org.aspectj.lang.JoinPoint;
+
 /*
  *@author: ZhengHaibo  
  *web:     http://blog.csdn.net/nuptboyzhb
@@ -13,7 +16,14 @@ package edu.njupt.zhb;
  */
 public class Logging {
 	
-	public void beforeAdvice(){
+	public void beforeAdvice(JoinPoint jointPoint){
+		Object methodArgs[] = jointPoint.getArgs();//获取切入点函数的参数
+		for(Object arg:methodArgs){
+			System.out.println("Logging:args type="+arg.getClass().getName());
+			System.out.println("Logging:args value="+arg);
+		}
+		System.out.println("Logging:ClassName="+jointPoint.getTarget().getClass().getName());
+		System.out.println("Logging:MethodName="+jointPoint.getSignature().getName());
 		System.out.println("Logging:before... ");
 	}
 	

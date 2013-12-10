@@ -30,7 +30,7 @@ public class Student {
 		System.out.println("Exception in Student.class...");
 		throw new IllegalArgumentException("Exception from Student...");
 	}
-	public void print(String say){
-		System.out.println("Say:"+say+",Name = "+name);
+	public void print(String say,int age){
+		System.out.println("Say:"+say+",Name = "+name+",age = "+age);
 	}
 }

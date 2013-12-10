@@ -31,7 +31,7 @@ public class TestMain {
 	    System.out.println("-------------");
 	    student.getName();
 	    System.out.println("-------------");
-	    student.print("Hi,I am a student");
+	    student.print("Hi,I am a student",20);
 	    System.out.println("-------------");
 	    try{
 	       student.printThrowException();
